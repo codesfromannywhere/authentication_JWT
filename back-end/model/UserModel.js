@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+process.env.TOKEN_SECRET;
 
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true, lowercase: true },
@@ -25,5 +30,12 @@ userSchema.methods.verifyPassword = function (password) {
 
     return this.hash === hash;
 };
+
+userSchema.methods.generateAuthToken = function () {
+    const payload = { email: this.email };
+    const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+    return token;
+};
+
 
 export const UserModel = mongoose.model("User", userSchema);

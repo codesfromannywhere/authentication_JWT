@@ -1,8 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-// const jwt = require('jsonwebtoken');
+import { UserModel } from "./model/index.js";
 
-import { UserModel } from "./model/index.js"
 
 
 dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
@@ -61,15 +60,45 @@ app.post("/api/login", async (req, res) => {
 
     // Überprüft PW
     const isPasswordValid = user.verifyPassword(password);
+
+    const token = user.generateAuthToken();
+    res.json(token);
+
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Ungültige E-mail oder Passwort" });
     }
-
     res.status(200).json({ message: "Login erfolgreich" });
   } catch (error) {
     res.status(500).json({ message: "Login fehlgeschlagen" });
   }
 });
+
+
+// const authenticateToken = (req, res, next) => {
+//   const authHeader = req.headers["authorization"];
+//   const token = authHeader && authHeader.split(" ")[1]; // Extrahiere den Token aus dem Authorization Header
+
+//   if (!token) {
+//     return res.sendStatus(401); // Token nicht vorhanden
+//   }
+
+//   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+//     if (err) {
+//       return res.sendStatus(403); // Token ungültig oder abgelaufen
+//     }
+
+//     req.user = user; // Speichere den Benutzer aus dem Token im Request-Objekt
+//     next(); // Rufe die nächste Middleware oder den Controller auf
+//   });
+// };
+
+
+
+
+// app.get("/api/secure", authenticateToken, (req, res) => {
+//   res.json({ authenticated: true });
+// });
+
 
 
 app.listen(PORT, () => {
