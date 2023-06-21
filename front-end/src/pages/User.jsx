@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const User = () => {
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
         axios.get("/api/secure", { withCredentials: true })
@@ -15,7 +15,7 @@ const User = () => {
                 console.error(err)
             })
     }, [])
-
+    // console.log(user);
     return (
         <>
             <h1>USERPROFIL</h1>

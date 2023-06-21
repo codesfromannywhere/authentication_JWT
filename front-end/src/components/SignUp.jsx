@@ -32,19 +32,19 @@ const SignUp = () => {
             <form onSubmit={handleSignIn}>
 
                 <label htmlFor="name" id="name" value="">name</label>
-                <input type="text" name="" id="name" placeholder="Type in your name" onChange={(e) => { setData({ ...data, name: e.target.value }) }} />
+                <input type="text" name="" id="name" placeholder="Type in your name" value={data.name} onChange={(e) => { setData({ ...data, name: e.target.value }) }} />
 
-                <label htmlFor="email" id="name">Type in your email adress</label>
+                <label htmlFor="email" id="email">Type in your email adress</label>
                 <input type="email"
-                    placeholder="Type in your email adress" id="email" onChange={(e) => { setData({ ...data, email: e.target.value }) }} />
+                    placeholder="Type in your email adress" id="email" value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} />
                 <label htmlFor="password" id="password">Password</label>
                 <input type="password"
-                    placeholder="Type in password" id="password" onChange={(e) => { setData({ ...data, password: e.target.value }) }} />
-                <label htmlFor="password" id="name" />
+                    placeholder="Type in password" id="password" value={data.password} onChange={(e) => { setData({ ...data, password: e.target.value }) }} />
+                <label htmlFor="password" id="password" />
                 <button>Sign Up</button>
 
             </form>
-            <Link to={"/login"}>Already signed up?Login</Link>
+            <Link to={"/login"}>Already signed up? Login</Link>
 
         </div>
     );

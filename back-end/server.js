@@ -24,13 +24,10 @@ app.get("/api/status", (req, res) => {
   res.send({ status: "Ok" });
 });
 
-app.get("/*", (req, res) => {
-  res.sendFile(ReactAppIndex.pathname);
-});
 
 
 app.post("/api/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     // Überprüft, ob User existiert
@@ -42,7 +39,7 @@ app.post("/api/signup", async (req, res) => {
 
 
     // Erstelle einen neuen Benutzer
-    const newUser = new UserModel({ email });
+    const newUser = new UserModel({ name, email });
     newUser.setPassword(password);
 
     // Speichert User in DB
@@ -82,7 +79,11 @@ app.post("/api/login", async (req, res) => {
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1]; // Extrahiere den Token aus dem Authorization Header
+  let token = authHeader && authHeader.split(" ")[1]; // Extrahiere den Token aus dem Authorization Header
+
+  if (!token && req?.cookies?.auth) {
+    token = req.cookies.auth;
+  }
 
   if (!token) {
     return res.sendStatus(401); // Token nicht vorhanden
@@ -100,10 +101,12 @@ const authenticateToken = (req, res, next) => {
 
 
 app.get("/api/secure", authenticateToken, (req, res) => {
-  res.json({ authenticated: true });
+  res.json(req.user);
 });
 
-
+app.get("/*", (req, res) => {
+  res.sendFile(ReactAppIndex.pathname);
+});
 
 app.listen(PORT, () => {
   console.log("Server running on Port: ", PORT);
