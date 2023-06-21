@@ -1,0 +1,33 @@
+.login-container {
+
+    width: 90vw;
+    margin: 0 auto;
+
+    .a-text {
+        color: #F4D8CD;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        input {
+            min-width: 25px;
+            max-width: 250px;
+        }
+
+        .loginbtn {
+            border: 2px solid #F4D8CD;
+            background-color: #F4D8CD;
+            border-radius: 10px;
+            padding: 2% 20%;
+            color: #1E555C;
+            text-align: center;
+
+
+        }
+    }
+
+
+}

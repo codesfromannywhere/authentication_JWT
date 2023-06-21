@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+    margin: 0 auto;
+
+    .signupbtn {
+        border: 2px solid #F4D8CD;
+        border-radius: 10px;
+        padding: 2% 20%;
+        margin: 2vh;
+
+        color: #F4D8CD;
+
+    }
+
+    .loginbtn {
+        border: 2px solid #F4D8CD;
+        background-color: #F4D8CD;
+        border-radius: 10px;
+
+        padding: 2% 20%;
+        color: #1E555C;
+    }
+}

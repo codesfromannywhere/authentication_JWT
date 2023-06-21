@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-
+import "./LogIn.scss"
 const LogIn = () => {
 
     const navigate = useNavigate()
@@ -27,19 +27,20 @@ const LogIn = () => {
     }
 
     return (
-        <div>
+        <div className="login-container">
             <h2>Login</h2>
+            <Link to={"/signup"} className="a-text">New? Sign up here!</Link>
+
             <form onSubmit={handleLogin}>
 
-                <label htmlFor="email" id="name">Your email adress</label>
+                <label htmlFor="email" id="name">Email adress</label>
                 <input type="email" placeholder="Type in your email adress" id="email" value={user.email} onChange={(e) => { setUser({ ...user, email: e.target.value }) }} />
-                <label htmlFor="password" id="password">Your Password</label>
+                <label htmlFor="password" id="password">Password</label>
                 <input type="password" placeholder="Type in your password" id="password" value={user.password} onChange={(e) => { setUser({ ...user, password: e.target.value }) }} />
-                <label htmlFor="password" id="name">Password</label>
-                <button>Login</button>
+
+                <button className="loginbtn">Login</button>
 
             </form>
-            <Link to={"/signup"}>Not a user? Sign up here!</Link>
         </div>
     );
 }

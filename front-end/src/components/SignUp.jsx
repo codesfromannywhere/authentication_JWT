@@ -29,6 +29,8 @@ const SignUp = () => {
     return (
         <div>
             <h2>Sign Up</h2>
+            <Link to={"/login"}>Already have an account? Login</Link>
+
             <form onSubmit={handleSignIn}>
 
                 <label htmlFor="name" id="name" value="">name</label>
@@ -44,7 +46,6 @@ const SignUp = () => {
                 <button>Sign Up</button>
 
             </form>
-            <Link to={"/login"}>Already signed up? Login</Link>
 
         </div>
     );
