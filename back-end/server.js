@@ -36,8 +36,10 @@ app.post("/api/signup", async (req, res) => {
     // Überprüft, ob User existiert
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ message: "E-mail wird bereits verwendet." });
+      // Bei bestehender E-Mail Adresse direkte Weiterleitung an "Login Components":
+      return res.redirect("/login");
     }
+
 
     // Erstelle einen neuen Benutzer
     const newUser = new UserModel({ email });
