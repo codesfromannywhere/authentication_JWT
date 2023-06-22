@@ -99,6 +99,10 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+app.get("/api/logout", (req, res) => {
+  res.clearCookie("auth");
+  res.send("Ok");
+});
 
 app.get("/api/secure", authenticateToken, (req, res) => {
   res.json(req.user);

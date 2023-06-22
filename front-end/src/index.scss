@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 1rem;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -16,6 +17,7 @@
 
 a {
   text-decoration: none;
+  font-size: 1rem;
 }
 
 // a:hover {
@@ -30,10 +32,13 @@ a {
 //   min-height: 100vh;
 // }
 
-h1 {
-  font-size: 2.2em;
-  line-height: 1.1;
+h1,
+h2 {
+  font-size: 2.5rem;
+  line-height: 1rem;
 }
+
+
 
 // button {
 //   border-radius: 8px;
