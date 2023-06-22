@@ -24,11 +24,13 @@ const SignUp = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault()
+        
         // Um dies zu prüfen, Inputfeler im Frontend ausfüllen
         console.log(data);
         await axios.post("/api/signup", data)
             .then((res) => {
                 console.log(res)
+                setData(defaultData);
                 navigate("/login")
             }).catch((err) => {
                 console.error(err)

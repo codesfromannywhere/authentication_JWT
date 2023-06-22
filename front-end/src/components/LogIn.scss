@@ -1,13 +1,11 @@
-.signup-container {
-
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 90vw;
-    margin: 0 auto;
-
 
     .a-text {
         color: #F4D8CD;
-
-
     }
 
     form {
@@ -17,7 +15,6 @@
         flex-direction: column;
         width: 100%;
         max-width: 400px;
-
 
         input {
             padding: 4% 20% 4% 2%;
@@ -35,11 +32,7 @@
             color: #1E555C;
             width: 100%;
             font-size: 1rem;
-            // margin-top: 3%;
-
-
-
-
+            margin-top: 3%;
         }
     }
 
